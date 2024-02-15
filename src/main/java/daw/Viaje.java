@@ -12,3 +12,5 @@ public record Viaje(String origen, String destino, int numeroPasajeros){
 
 
 }
+
+

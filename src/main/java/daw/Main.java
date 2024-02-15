@@ -5,52 +5,45 @@
 package daw;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
- * @author 
+ * @author
  */
 public class Main {
-    
+
     public static void main(String[] args) {
-        
-       
+        ;
+
+        System.out.println(viajes(getListaViajes(), 0));
     }
     //----------------------------------------
     // ABRE EL ARCHIVO POM.XML, MODIFICA EL CONTENIDO QUE HAY ENTRE LAS ETIQUETAS
     // <artifactId>PruebaFeb24</artifactId> PARA QUE SEA <artifactId>PruebaFeb24+TUNOMBRE</artifactId>
-    
+
     // CREA UN REPOSITORIO LOCAL GIT, AÑADE EN UN PRIMER COMMIT LOS ARCHIVOS NECESARIOS
     // DEL PROYECTO. EL REPOSITORIO, AL FINALIZAR LA PRUEBA, DEBE CONTENER CUATRO COMMITS, UNO POR CADA
     // APARTADO. AL CREAR EL ZIP, INCLUYE LA CARPETA .GIT. SI NO HAY CONTROL DE VERSIONES CORRECTO
     // NO SE CORRIGE EL RESTO
     //---------------------------------------
-    
     // A.- Crea un método que reciba la lista y devuelva una estructura de datos/colección
     // / con el número de viajes que salen de cada ciudad de origen. Usa el método en el main
     // e imprime el resultado usando un foreach
-  
-    
     // B.- Crea un método que reciba la lista y devuelva una estructura de datos/colección 
     // con todos los destinos diferentes. Usa el método en el main
     // e imprime el resultado usando un iterador
-   
-    
     // C.- Crea un método que reciba la lista y devuelva una estructura de datos/colección
     // para saber por cada ciudad destino el número total de viajeros que llegan ese día
     // Usa el método en el main, obten las claves de la estructura devuelta e iterando por ellas imprime 
     // el número de viajeros por ciudad
-    
-    
     // D.- Crea un método que reciba la lista y la ordene por destino y si hay
     // destinos iguales se ordenan por número de viajeros. Usa el método en el main
     // e imprime el resultado usando foreach con expresión lambda, para obtener
     // una salida como esta por cada elemento: "Destino: Estepona Viajeros: 35" 
-    
-    
     //---------------------------------------
-    
-    private static ArrayList<Viaje> getListaViajes(){
+    private static ArrayList<Viaje> getListaViajes() {
         ArrayList<Viaje> listaViajes = new ArrayList();
         // Origen - destino - número de pasajeros
         listaViajes.add(new Viaje("Estepona", "Málaga", 120));
@@ -61,7 +54,25 @@ public class Main {
         listaViajes.add(new Viaje("Granada", "Estepona", 35));
         listaViajes.add(new Viaje("Casares", "Málaga", 12));
         listaViajes.add(new Viaje("Marbella", "Málaga", 120));
-        
+
+        listaViajes.get(0).destino();
+
         return listaViajes;
     }
+
+    public static Map<String, Integer> viajes(ArrayList<Viaje> listaViajes, int contador) {
+
+        Map<String, Integer> mapa = new HashMap();
+
+        for (int i = 0; i < listaViajes.size(); i++) {
+            mapa.put(listaViajes.get(i).origen(), ++contador);
+        }
+
+        return mapa;
+    }
+
 }
+// A.- Crea un método que reciba la lista y devuelva una estructura de datos/colección
+// / con el número de viajes que salen de cada ciudad de origen. Usa el método en el main
+// e imprime el resultado usando un foreach
+
